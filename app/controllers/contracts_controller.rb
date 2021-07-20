@@ -46,6 +46,6 @@ class ContractsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def contract_params
-      params.require(:contract).permit(:price, :start_date, :end_date, :expiry_date, :customer_id)
+      params.require(:contract).permit(:_id, :price, :start_date, :end_date, :expiry_date, :customer_id)
     end
 end
