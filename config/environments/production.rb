@@ -1,6 +1,12 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+
+  # Use default logging formatter so that PID and timestamp are not suppressed.
+  config.log_formatter = ::Logger::Formatter.new
+
+  # For logging in docker logs
+  config.logger = Logger.new('/proc/1/fd/1')
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

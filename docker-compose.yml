@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  f_app:
+    restart: unless-stopped
+    container_name: "f_app"
+    build:
+      context: .
+      dockerfile: docker/production/app.Dockerfile
+      args:
+        APP_PATH: '/app'
+    image: finlex_app
+    command: bash -c "bundle exec rails s -p 3000 -b '0.0.0.0' -e production"
+    ports:
+      - 3000:3000
+      - 80:80
+    depends_on:
+      - f_mongo
+      - f_redis
+    links:
+      - f_mongo
+      - f_redis
+    env_file:
+      - docker/production/.env
+    networks:
+      - app-tier
+  sidekiq:
+    restart: unless-stopped
+    container_name: "sidekiq"
+    image: finlex_app
+    env_file:
+      - docker/production/.env
+    depends_on:
+      - f_mongo
+      - f_redis
+    links:
+      - f_mongo
+      - f_redis
+    command: bash -c "bundle exec sidekiq"
+    networks:
+      - app-tier
+  f_mongo:
+    restart: unless-stopped
+    container_name: "f_mongo"
+    image: mongo:5.0
+    # ports:
+    #   - 27017:27017
+    env_file:
+      - docker/production/.env
+    networks:
+      - app-tier
+  f_redis:
+    restart: unless-stopped
+    container_name: "f_redis"
+    image: redis:6.2-alpine
+    # ports:
+    #   - 6379:6379
+    env_file:
+      - docker/production/.env
+    networks:
+      - app-tier
+
+networks:
+  app-tier:
