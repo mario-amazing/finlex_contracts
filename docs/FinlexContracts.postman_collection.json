@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "c1fd92de-0d1d-4a61-964e-64e3507e73f2",
+		"name": "FinlexContracts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Contracts Index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/contracts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contracts"
+					]
+				},
+				"description": "Contracts Index\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Contract Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"contract\": {\n    \t\"_id\": 69,\n    \t\"customer_id\": \"42\",\n        \"price\": 1,\n        \"start_date\": \"2021-07-20\",\n        \"end_date\": \"2021-09-20\",\n        \"expiry_date\": \"2021-10-20\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/contracts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contracts Bulk Upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "contracts_file",
+							"type": "file",
+							"src": "/Users/mario/work/finlex_contracts/spec/fixtures/files/customer_bulk_upload.json"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/contracts/bulk_uploads",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contracts",
+						"bulk_uploads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contract Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"contract\": {\n    \t\"customer_id\": \"42\",\n        \"price\": 1,\n        \"start_date\": \"2021-07-20\",\n        \"end_date\": \"2021-09-20\",\n        \"expiry_date\": \"2021-12-20\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/contracts/69",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contracts",
+						"69"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contract Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"contract\": {\n    \t\"customer_id\": \"42\",\n        \"price\": 1,\n        \"start_date\": \"2021-07-20\",\n        \"end_date\": \"2021-09-20\",\n        \"expiry_date\": \"2021-12-20\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/contracts/69",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contracts",
+						"69"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customer\": {\n    \t\"_id\": \"42\",\n    \t\"name\": \"The One\",\n        \"address\": \"The Matrix\",\n        \"email\": \"neo@miracle.finlex\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
