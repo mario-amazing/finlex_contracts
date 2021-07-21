@@ -1,24 +1,27 @@
-# README
+## DEMO VIDEO!!!
+[DEMO video Online](https://marioamazing.cdn.spotlightr.com/watch/MTE0NjY5Mw==)
+<br>
+[DEMO video From files](https://github.com/mario-amazing/finlex_contracts/blob/master/docs/FinlexDemo.mov)
+## Instalation:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Download project:
+```sh
+$ git clone https://github.com/mario-amazing/finlex_contracts.git
+```
 
-Things you may want to cover:
+Go to the folder and start project with docker compose:
+```sh
+$ docker-compose up
+```
+That's all! :)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Postman collection keep in docs folder:
+```sh
+docs/FinlexContracts.postman_collection.json
+```
+Note: Postman bulk uploads url require file from `spec/fixtures/files/customer_bulk_upload.json`
+#### Tests
+Run specs:
+```sh
+$ rspec
+```
